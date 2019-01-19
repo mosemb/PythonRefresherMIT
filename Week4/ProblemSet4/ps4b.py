@@ -125,9 +125,118 @@ def playGame(wordList):
     wordList: list (string)
     """
     # TO DO... <-- Remove this comment when you code this function
-    print("playGame not yet implemented.") # <-- Remove this when you code this function
+    #print("playGame not yet implemented.") # <-- Remove this when you code this function
 
-        
+
+    hands2 = []
+    hands3=["r","e","n"]
+    hands4 = ["u","c"]
+    while True:
+        userinput1 = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+        print()
+
+        while userinput1 not in hands3:
+            if userinput1 not in hands3:
+                print("Invalid command")
+                userinput1 = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+            else:
+                break
+
+
+        while userinput1 is "r":
+            print()
+            if len(hands2) <=0:
+                print("You have not played a hand yet. Please play a new hand first!")
+                userinput1 = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+            else:
+                break
+
+        if userinput1 not in hands3:
+            print("Invalid command")
+            userinput1 = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+
+        if userinput1 is "e":
+            print()
+            break
+
+
+        userinput2 = input("Enter u to have yourself play, c to have the computer play: ")
+        while userinput2 not in hands4:
+            print()
+            if userinput2 not in hands4:
+                print("Invalid Command ")
+                userinput2 = input("Enter u to have yourself play, c to have the computer play: ")
+            else:
+                break
+
+
+        if userinput1 == 'n' and userinput2== 'u':
+            hand = dealHand(HAND_SIZE)
+            n = sum(hand.values())
+            playHand(hand, wordList, n)
+            hands2.append(hand)
+
+        elif userinput1 == 'r' and userinput2 == 'u' and len(hands2)!=0:
+            hand = hands2[-1]
+            n = sum(hand.values())
+            playHand(hand, wordList, n)
+
+        elif userinput1 == 'n' and userinput2 == 'c':
+            hand = dealHand(HAND_SIZE)
+            n = sum(hand.values())
+            compPlayHand(hand, wordList, n)
+            hands2.append(hand)
+
+        elif userinput1 == 'r' and userinput2=='c'and len(hands2)!=0:
+            hand = hands2[-1]
+            n=sum(hand.values())
+            compPlayHand(hand,wordList,n)
+    
+    
+
+
+    """
+        hands = []
+    valid = ["e","n","r"]
+    valid2 = ["c","u"]
+    while True:
+        userinput1 = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+
+        if userinput1 in valid and userinput1 == "e":
+            break
+
+        if userinput1 is "r" and len(hands)==0:
+            print("You have not played a hand yet. Please play a new hand first! ")
+            continue
+
+        if userinput1 not in valid:
+            print("Invalid command ")
+            continue
+
+        while True:
+            userinput2 = input("Enter u to have yourself play, c to have the computer play: ")
+
+            if userinput2 not in valid2:
+                print ("Invalid command")
+                continue
+            else:
+                if userinput2 == 'u':
+                    hand = dealHand(HAND_SIZE)
+                    n = sum(hand.values())
+                    playHand(hand, wordList, n)
+                    hands.append(hand)
+    
+    """
+
+
+
+
+
+
+
+
+
+
 #
 # Build data structures used for entire session and play game
 #
